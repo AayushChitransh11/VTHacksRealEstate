@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import { Button, Input, Textarea, Card, CardContent, CardHeader, CardTitle } from '@/components/ui'; // Assuming components are available in a common path
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Building2, Search, MessageCircle, Mail, Book, Video, Users, ThumbsUp } from 'lucide-react';
 
 const Header = () => (
@@ -11,15 +8,14 @@ const Header = () => (
       <span className="text-xl font-bold">RealtyChain</span>
     </a>
     <nav className="hidden md:flex space-x-4">
+      <a href="/" className="text-sm font-medium hover:text-primary">Home</a>
       <a href="/browse" className="text-sm font-medium hover:text-primary">Browse Properties</a>
       <a href="/how-it-works" className="text-sm font-medium hover:text-primary">How It Works</a>
-      <a href="/investors" className="text-sm font-medium hover:text-primary">Investors Portal</a>
-      <a href="/developers" className="text-sm font-medium hover:text-primary">Developers Portal</a>
-      <a href="/help" className="text-sm font-medium hover:text-primary">Help/FAQ</a>
+      <a href="/faq" className="text-sm font-medium hover:text-primary">Help/FAQ</a>
     </nav>
     <div className="flex space-x-2">
-      <Button variant="outline">Log In</Button>
-      <Button>Sign Up</Button>
+      <button className="border border-gray-300 rounded px-4 py-2 hover:bg-gray-100">Log In</button>
+      <button className="bg-primary text-white rounded px-4 py-2 hover:bg-primary-dark">Sign Up</button>
     </div>
   </header>
 );
@@ -34,7 +30,11 @@ const Introduction = () => (
       <div className="max-w-xl mx-auto">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          <Input type="search" placeholder="Search for answers..." className="pl-10" />
+          <input
+            type="search"
+            placeholder="Search for answers..."
+            className="pl-10 py-2 px-4 border rounded w-full"
+          />
         </div>
       </div>
     </div>
@@ -43,7 +43,7 @@ const Introduction = () => (
 
 const FAQSection = () => {
   const [activeTab, setActiveTab] = useState('investment');
-  
+
   const faqCategories = [
     {
       id: 'investment',
@@ -131,15 +131,15 @@ const FAQSection = () => {
       questions: [
         {
           q: "What should I do if I encounter technical problems?",
-          a: "If you face technical issues:\n1. Clear your browser cache and cookies\n2. Try using a different browser or device\n3. Check our system status page for any known issues\n4. Ensure your internet connection is stable\n5. If problems persist, contact our technical support team with a detailed description of the issue"
+          a: "If you face technical issues:\n1. Clear your browser cache and cookies\n2. Try using a different browser or device\n3. Check our system status page for any known issues\n4. Ensure your internet connection is stable\n5. If the problem persists, contact our support team with detailed information about the issue\n6. Provide screenshots or error messages if available\n\nOur technical support team is available 24/7 to assist with any issues you may encounter."
         },
         {
-          q: "Is my data safe on RealtyChain?",
-          a: "Yes, your data is safe with RealtyChain. We use industry-standard encryption methods to protect your data, and our platform complies with strict data protection regulations. Regular security audits and updates are performed to ensure your information remains secure."
+          q: "How can I report a bug or issue on the platform?",
+          a: "To report a bug or issue:\n1. Navigate to the 'Support' section of our website\n2. Click on 'Report a Bug'\n3. Provide a detailed description of the issue\n4. Attach any relevant screenshots or error messages\n5. Submit the report\n\nOur development team will review your report and work on resolving the issue as quickly as possible."
         },
         {
-          q: "How do I report a bug or issue with the platform?",
-          a: "To report a bug or issue:\n1. Navigate to the 'Support' section of our website\n2. Click on 'Report a Bug' or 'Submit a Ticket'\n3. Provide a detailed description of the issue and steps to reproduce it\n4. Submit the form\n\nOur technical team will review your report and work on a resolution as quickly as possible."
+          q: "What browsers and devices are supported?",
+          a: "RealtyChain is optimized for modern browsers and devices:\n- Chrome (latest version)\n- Firefox (latest version)\n- Safari (latest version)\n- Edge (latest version)\n\nWe recommend using the latest versions of these browsers for the best experience. Our platform is also mobile-responsive and works well on smartphones and tablets."
         }
       ]
     }
@@ -148,43 +148,81 @@ const FAQSection = () => {
   return (
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-semibold mb-6 text-center">Frequently Asked Questions</h2>
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="flex justify-center mb-6">
-            {faqCategories.map((category) => (
-              <TabsTrigger key={category.id} value={category.id} className="text-lg font-medium px-4 py-2">
-                {category.title}
-              </TabsTrigger>
+        <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions</h2>
+        <div className="flex flex-wrap">
+          <div className="w-full md:w-1/4">
+            <div className="bg-gray-100 p-4 rounded">
+              {faqCategories.map(category => (
+                <button
+                  key={category.id}
+                  className={`block w-full text-left py-2 px-4 border-b border-gray-200 hover:bg-gray-200 ${
+                    activeTab === category.id ? 'bg-gray-200' : ''
+                  }`}
+                  onClick={() => setActiveTab(category.id)}
+                >
+                  {category.title}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="w-full md:w-3/4 pl-4">
+            {faqCategories.find(category => category.id === activeTab)?.questions.map((q, index) => (
+              <div key={index} className="mb-6">
+                <h3 className="text-xl font-semibold">{q.q}</h3>
+                <p className="mt-2">{q.a}</p>
+              </div>
             ))}
-          </TabsList>
-          {faqCategories.map((category) => (
-            <TabsContent key={category.id} value={category.id}>
-              <Accordion type="single" collapsible>
-                {category.questions.map((item, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger>{item.q}</AccordionTrigger>
-                    <AccordionContent>
-                      <p>{item.a}</p>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </TabsContent>
-          ))}
-        </Tabs>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
-const FAQ = () => (
-  <>
-    <Header />
-    <main>
-      <Introduction />
-      <FAQSection />
-    </main>
-  </>
+const SupportContact = () => (
+  <section className="py-12 bg-gray-50">
+    <div className="container mx-auto px-4">
+      <h2 className="text-3xl font-bold text-center mb-6">Need Further Assistance?</h2>
+      <p className="text-center text-lg mb-8 max-w-2xl mx-auto">
+        If you need additional help or have specific inquiries, please contact our support team. We're here to assist you with any questions or issues you may have.
+      </p>
+      <div className="max-w-md mx-auto">
+        <form action="#" method="POST" className="bg-white p-6 border border-gray-300 rounded">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+          <input
+            id="name"
+            type="text"
+            required
+            className="block w-full border border-gray-300 rounded px-3 py-2 mb-4"
+          />
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+          <input
+            id="email"
+            type="email"
+            required
+            className="block w-full border border-gray-300 rounded px-3 py-2 mb-4"
+          />
+          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+          <textarea
+            id="message"
+            rows="4"
+            required
+            className="block w-full border border-gray-300 rounded px-3 py-2"
+          />
+          <button type="submit" className="mt-4 bg-primary text-white rounded px-4 py-2 hover:bg-primary-dark">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
 );
 
-export default FAQ;
+const Help = () => (
+  <div>
+    <Header />
+    <Introduction />
+    <FAQSection />
+    <SupportContact />
+  </div>
+);
+
+export default Help;

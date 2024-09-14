@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SearchResults from './PropertySearch';
 import ListingPage from './propertyDetail';
 import Dashboard from './Dashboard';
+import Help from './help';
 const API_KEY = process.env.AUTH_URL;
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/search" element={<SearchResults />} />
           <Route path="/listing/:id" element={<ListingPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path='/help' element={Help}/>
       </Routes>
     </BrowserRouter>
   );

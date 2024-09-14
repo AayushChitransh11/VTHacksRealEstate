@@ -1,5 +1,15 @@
 import React from 'react';
 import { useAuthInfo, useLogoutFunction, useRedirectFunctions } from '@propelauth/react';
+import { useNavigate } from 'react-router-dom';
+
+
+<<<<<<< HEAD
+import { useAuthInfo, useLogoutFunction, useRedirectFunctions } from '@propelauth/react';
+=======
+import { withAuthInfo, useRedirectFunctions, useLogoutFunction } from '@propelauth/react'
+import { useNavigate } from 'react-router-dom';
+
+>>>>>>> 964f042 (cherry changes)
 
 const Header = () => {
   const { isLoggedIn } = useAuthInfo();
@@ -33,23 +43,52 @@ const Header = () => {
   );
 };
 
-const HeroSection = () => (
-  <section className="relative h-[600px] flex items-center justify-center bg-gradient-to-r from-primary to-primary-foreground text-white bg-black">
-    <div className="absolute inset-0 overflow-hidden">
-      <img src="/Hero.jpg"alt="Real Estate Investment" className="object-cover w-full h-full opacity-70" />
-    </div>
-    <div className="relative z-10 text-center space-y-6">
-      <h1 className="text-5xl font-bold">Democratizing Real Estate Investment Through Fintech</h1>
-      <p className="text-xl max-w-2xl mx-auto">Invest in premium properties with as little as $100. Powered by blockchain and AI.</p>
-      <div className="flex justify-center space-x-4">
-        <button className="bg-white text-primary hover:bg-gray-100 px-6 py-3 text-black"   onClick={() => window.location.href = '/browse'}>Get Started</button>
-        <button className="border-white px-6 py-3 text-white border"   onClick={() => window.location.href = '/how-it-works'}>
-          <i className="mr-2">▶️</i> Watch How It Works
-        </button>
-      </div>
-    </div>
-  </section>
+const Button = ({ onClick, children, className = '' }) => (
+  <button onClick={onClick} className={`px-6 py-3 ${className}`}>
+    {children}
+  </button>
 );
+
+const HeroSection = () => {
+  const navigate = useNavigate();
+
+  return (
+    <section className="relative h-[600px] flex items-center justify-center bg-gradient-to-r from-primary to-primary-foreground text-white bg-black">
+      <div className="absolute inset-0 overflow-hidden">
+        <img
+          src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQ4SWiqtVVgnVF8q4da6i0-XgT3lGryJGHFZLi4iVc3fqAJlGERHeOP4uoNG0G8X-zAi8u_jUtnH3gsnqALzkTwL8K_q6hji0K6C7JjnQ"
+          alt="Real Estate Investment"
+          className="object-cover w-full h-full opacity-60"
+        />
+      </div>
+      <div className="relative z-10 text-center space-y-6">
+        <h1 className="text-5xl font-bold">
+          Democratizing Real Estate Investment Through Fintech
+        </h1>
+        <p className="text-xl max-w-2xl mx-auto">
+          Invest in premium properties with as little as $100. Powered by blockchain and AI.
+        </p>
+        <div className="flex justify-center space-x-4">
+          {/* Navigate to the browse page */}
+          <Button
+            onClick={() => navigate('/browse')}
+            className="bg-white text-primary hover:bg-gray-100 text-black"
+          >
+            Get Started
+          </Button>
+
+          {/* Action for watching the video */}
+          <Button
+            onClick={() => alert('Watch video')}
+            className="border-white text-white border hover:bg-white hover:text-black"
+          >
+            <i className="mr-2">▶️</i> Watch How It Works
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const FeatureCard = ({ icon, title, description }) => (
   <div className="bg-white shadow rounded-lg p-4">
