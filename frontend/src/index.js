@@ -1,18 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import Home from './Home';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from "@propelauth/react";
+import BrowsePropertiesPage from './BrowseProperties';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/browse" element={<BrowsePropertiesPage />} />    
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <AuthProvider authUrl={process.env.REACT_APP_AUTH_URL}>
-
-    <App />
-
-</AuthProvider>
+<App />
 );
 
 

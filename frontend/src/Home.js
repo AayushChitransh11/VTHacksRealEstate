@@ -1,18 +1,6 @@
 import React from 'react';
 import { withAuthInfo, useRedirectFunctions, useLogoutFunction } from '@propelauth/react'
-const logoutFunction = useLogoutFunction()
-const { redirectToLoginPage, redirectToSignupPage, redirectToAccountPage } = useRedirectFunctions()
-const headerlogin = () => {
-  if(props.isLoggedIn){
-    return(<>
-      <button className="border px-4 py-2 red">Log Out</button>
-      </>)}
-      else{
-        return(<>
-          <button onClick={redirectToLoginPage} className="border px-4 py-2">Log In</button>
-          <button onClick={redirectToSignupPage} className="bg-primary px-4 py-2 text-white">Sign Up</button></>)
-      }
-    }
+
 const Header = () => (
   <header className="flex items-center justify-between px-6 py-4 bg-white shadow-sm">
     <a href="/" className="flex items-center space-x-2">
@@ -27,7 +15,7 @@ const Header = () => (
       <a href="/help" className="text-sm font-medium hover:text-primary">Help/FAQ</a>
     </nav>
     <div className="flex space-x-2">
-      <headerlogin/>
+
       <button className="border px-4 py-2">Log In</button>
       <button className="bg-primary px-4 py-2 text-white">Sign Up</button>
     </div>
@@ -86,7 +74,7 @@ const FeaturesSection = () => (
         <FeatureCard
           icon={<i className="text-primary">⭐</i>}
           title="Automated Dividends"
-          description="Receive your share of rental income and property appreciation automatically."
+          description="Receive your share of rental income and property Homereciation automatically."
         />
       </div>
     </div>
@@ -219,7 +207,7 @@ const Footer = () => (
   </footer>
 )
 
-const App = () => (
+const Home = () => (
   <div>
     <Header />
     <HeroSection />
@@ -230,4 +218,4 @@ const App = () => (
   </div>
 )
 
-export default App;
+export default Home;
