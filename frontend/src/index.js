@@ -23,7 +23,7 @@ export default function App() {
           <Route path="/search" element={<SearchResults />} />
           <Route path="/listing/:id" element={<ListingPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path='/help' element={Help}/>
+          <Route path='/help' element={<Help/>}/>
       </Routes>
     </BrowserRouter>
   );

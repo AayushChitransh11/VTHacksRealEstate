@@ -4,9 +4,12 @@ import os
 from dotenv import load_dotenv
 from propelauth_flask import init_auth,current_user
 load_dotenv()
+from flask_cors import CORS
+
 
 app = Flask(__name__)
-auth = init_auth(os.getenv("PROPEL_AUTH_URL"), os.getenv("PROPEL_AUTH_KEY"))
+CORS(app)
+# auth = init_auth(os.getenv("PROPEL_AUTH_URL"), os.getenv("PROPEL_AUTH_KEY"))
 
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
@@ -33,7 +36,7 @@ def get_only_prop_location():
 
 # --- PROPERTIES ROUTES ---
 @app.route('/properties', methods=['GET'])
-@auth.optional_user
+# @auth.optional_user
 def get_properties():
     try:
         # Get the page number and page size from query parameters
@@ -56,7 +59,7 @@ def get_properties():
         return jsonify({'error': 'Failed to fetch properties'}), 500
 
 @app.route('/properties/<int:property_id>', methods=['GET'])
-@auth.optional_user
+# @auth.optional_user
 def get_property_by_id(property_id):
     """Fetch a specific property by property_id."""
     try:
@@ -86,7 +89,7 @@ def get_user_details(user_id):
         return None
 
 @app.route('/user/<user_id>', methods=['GET'])
-@auth.require_user
+# @auth.require_user
 def get_user(user_id):
     if not user_id.isdigit():
         app.logger.error(f"Invalid user_id format: {user_id}")
@@ -115,7 +118,7 @@ def get_user(user_id):
 #         print(f"Exception Details: {e}")  # Print exception details for debugging
 #         return jsonify({'error': 'Failed to fetch investments'}), 500
 @app.route('/investments', methods=['GET'])
-@auth.require_user
+# @auth.require_user
 def get_investments():
     try:
         # Fetch data from 'investments' table
