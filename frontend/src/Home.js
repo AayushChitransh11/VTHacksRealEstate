@@ -2,15 +2,6 @@ import React from 'react';
 import { useAuthInfo, useLogoutFunction, useRedirectFunctions } from '@propelauth/react';
 import { useNavigate } from 'react-router-dom';
 
-
-<<<<<<< HEAD
-import { useAuthInfo, useLogoutFunction, useRedirectFunctions } from '@propelauth/react';
-=======
-import { withAuthInfo, useRedirectFunctions, useLogoutFunction } from '@propelauth/react'
-import { useNavigate } from 'react-router-dom';
-
->>>>>>> 964f042 (cherry changes)
-
 const Header = () => {
   const { isLoggedIn } = useAuthInfo();
   const { redirectToLoginPage, redirectToSignupPage, redirectToAccountPage } = useRedirectFunctions();
