@@ -47,7 +47,7 @@ const HeroSection = () => {
     <section className="relative h-[600px] flex items-center justify-center bg-gradient-to-r from-primary to-primary-foreground text-white bg-black">
       <div className="absolute inset-0 overflow-hidden">
         <img
-          src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQ4SWiqtVVgnVF8q4da6i0-XgT3lGryJGHFZLi4iVc3fqAJlGERHeOP4uoNG0G8X-zAi8u_jUtnH3gsnqALzkTwL8K_q6hji0K6C7JjnQ"
+          src='/Hero.jpg'
           alt="Real Estate Investment"
           className="object-cover w-full h-full opacity-60"
         />
