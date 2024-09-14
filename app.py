@@ -1,58 +1,56 @@
-from flask import Flask, request, jsonify, send_from_directory
-from werkzeug.utils import secure_filename
+from flask import Flask, request, jsonify
+from supabase import create_client, Client
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'static/uploads'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 MB max file size
 
-# Sample properties data
-properties = []
+# Supabase configuration
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_ANON_KEY")
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 @app.route('/properties', methods=['GET'])
 def get_properties():
-    return jsonify(properties)
+    response = supabase.table('properties').select('*').execute()
+    return jsonify(response.data)
 
-@app.route('/properties', methods=['POST'])
-def add_property():
-    data = request.form
-    name = data.get('name')
-    location = data.get('location')
-    total_fractions = int(data.get('totalFractions'))
-    price_per_fraction = float(data.get('pricePerFraction'))
+# @app.route('/properties', methods=['POST'])
+# def add_property():
+#     data = request.form
+#     name = data.get('name')
+#     location = data.get('location')
+#     built_date = data.get('builtDate')  
+#     dimension = data.get('dimension')
+#     price = float(data.get('price'))
 
-    image = request.files.get('image')
-    if image:
-        filename = secure_filename(image.filename)
-        image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        image_path = f'/static/uploads/{filename}'
-    else:
-        image_path = None
+#     response = supabase.table('properties').insert({
+#         'property_name': name,
+#         'property_location': location,
+#         'property_built_date': built_date,
+#         'property_dimension': dimension,
+#         'property_price': price
+#     }).execute()
 
-    new_property = {
-        'id': len(properties) + 1,
-        'name': name,
-        'location': location,
-        'total_fractions': total_fractions,
-        'price_per_fraction': price_per_fraction,
-        'image': image_path
-    }
-    properties.append(new_property)
-    return jsonify(new_property), 201
+#     return jsonify(response.data), 201
 
-@app.route('/purchase', methods=['POST'])
-def purchase_fraction():
-    data = request.json
-    user_id = data.get('userId')
-    property_id = data.get('propertyId')
-    fractions_to_buy = data.get('fractionsToBuy')
-    token = data.get('token')
+# @app.route('/purchase', methods=['POST'])
+# def purchase_fraction():
+#     data = request.json
+#     user_id = data.get('userId')
+#     property_id = data.get('propertyId')
+#     fractions_to_buy = data.get('fractionsToBuy')
+#     token = data.get('token')
 
-    # Here you would process the payment with Stripe and update the property data
-    # For now, just return a success message
-    return jsonify({'message': 'Purchase successful!'})
+#     response = supabase.table('transaction').insert({
+#         'transaction_date': '2024-01-01',  
+#         'customer_id': 1, 
+#         'property_id': property_id
+#     }).execute()
+
+    # return jsonify({'message': 'Purchase successful!'})
 
 if __name__ == '__main__':
-    if not os.path.exists(app.config['UPLOAD_FOLDER']):
-        os.makedirs(app.config['UPLOAD_FOLDER'])
     app.run(debug=True)

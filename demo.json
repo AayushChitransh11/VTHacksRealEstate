@@ -1,0 +1,83 @@
+[
+    {
+      "id": 1,
+      "name": "Beach House",
+      "location": "Malibu, CA",
+      "total_fractions": 16,
+      "price_per_fraction": 50000,
+      "image": "/static/uploads/beach_house.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Mountain Cabin",
+      "location": "Aspen, CO",
+      "total_fractions": 8,
+      "price_per_fraction": 75000,
+      "image": "/static/uploads/mountain_cabin.jpg"
+    },
+    {
+      "id": 3,
+      "name": "City Apartment",
+      "location": "New York, NY",
+      "total_fractions": 10,
+      "price_per_fraction": 120000,
+      "image": "/static/uploads/city_apartment.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Lake House",
+      "location": "Lake Tahoe, CA",
+      "total_fractions": 12,
+      "price_per_fraction": 60000,
+      "image": "/static/uploads/lake_house.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Countryside Villa",
+      "location": "Napa Valley, CA",
+      "total_fractions": 20,
+      "price_per_fraction": 85000,
+      "image": "/static/uploads/countryside_villa.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Historic Mansion",
+      "location": "Charleston, SC",
+      "total_fractions": 5,
+      "price_per_fraction": 200000,
+      "image": "/static/uploads/historic_mansion.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Modern Loft",
+      "location": "San Francisco, CA",
+      "total_fractions": 15,
+      "price_per_fraction": 95000,
+      "image": "/static/uploads/modern_loft.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Desert Retreat",
+      "location": "Sedona, AZ",
+      "total_fractions": 10,
+      "price_per_fraction": 70000,
+      "image": "/static/uploads/desert_retreat.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Seaside Cottage",
+      "location": "Cape Cod, MA",
+      "total_fractions": 14,
+      "price_per_fraction": 55000,
+      "image": "/static/uploads/seaside_cottage.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Urban Penthouse",
+      "location": "Chicago, IL",
+      "total_fractions": 7,
+      "price_per_fraction": 180000,
+      "image": "/static/uploads/urban_penthouse.jpg"
+    }
+  ]
+  
