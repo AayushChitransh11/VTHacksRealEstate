@@ -5,6 +5,8 @@ import Home from './Home';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from "@propelauth/react";
 import BrowsePropertiesPage from './BrowseProperties';
+import HowItWorks from './howitworks';
+// import FAQ from './help';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -13,6 +15,8 @@ export default function App() {
       <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/browse" element={<BrowsePropertiesPage />} />    
+          <Route path="/how-it-works" element={<HowItWorks />}/>
+          {/* <Route path="/help" element={<FAQ />}/> */}
       </Routes>
     </BrowserRouter>
   );
