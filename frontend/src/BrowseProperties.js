@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropertyMap from './properlyMap';
 
 const Header = () => (
   <header className="flex items-center justify-between px-6 py-4 bg-white shadow-sm">
@@ -87,6 +88,7 @@ const BrowsePropertiesPage = () => (
   <div>
     <Header />
     <div className="container mx-auto px-4 py-8">
+        <PropertyMap />
       <FiltersAndSorting />
       <div className="py-16">
         <h2 className="text-3xl font-bold text-center mb-12">Browse Properties</h2>

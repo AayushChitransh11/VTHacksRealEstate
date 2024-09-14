@@ -8,15 +8,17 @@ import BrowsePropertiesPage from './BrowseProperties';
 import HowItWorks from './howitworks';
 // import FAQ from './help';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import SearchResults from './PropertySearch';
+import ListingPage from './propertyDetail';
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/browse" element={<BrowsePropertiesPage />} />    
-          <Route path="/how-it-works" element={<HowItWorks />}/>
-          {/* <Route path="/help" element={<FAQ />}/> */}
+          <Route path="/browse" element={<BrowsePropertiesPage />} />   
+          <Route path="/how-it-works" element={<HowItWorks />}/> 
+          <Route path="/search" element={<SearchResults />} />
+          <Route path="/listing/:id" element={<ListingPage />} />
       </Routes>
     </BrowserRouter>
   );
