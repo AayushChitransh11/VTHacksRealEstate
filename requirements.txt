@@ -2,3 +2,4 @@ Flask
 Werkzeug
 supabase
 python-dotenv
+propelauth_flask

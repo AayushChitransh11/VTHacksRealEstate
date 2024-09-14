@@ -2,13 +2,13 @@ from flask import Flask, request, jsonify, abort
 from supabase import create_client, Client
 import os
 from dotenv import load_dotenv
-
-# Load environment variables from .env file
+from propelauth_flask import init_auth,current_user
 load_dotenv()
 
 app = Flask(__name__)
+auth = init_auth(os.getenv("PROPEL_AUTH_URL"), os.getenv("PROPEL_AUTH_KEY"))
 
-# Supabase configuration
+
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_ANON_KEY")
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
@@ -18,11 +18,34 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 def home():
     return '<h1>Home Page</h1>'
 
+@app.route('/properties2', methods=['GET'])
+def get_only_prop_location():
+    try:
+        response = supabase.table('properties').select('location').execute()
+        print(f"Properties Response: {response}")  # Debugging: print response
+        if response.data:
+            return jsonify(response.data)
+        else:
+            return jsonify([]), 204
+    except Exception as e:
+        app.logger.error(f"Error fetching properties: {e}")
+        return jsonify({'error': 'Failed to fetch properties'}), 500
+
 # --- PROPERTIES ROUTES ---
 @app.route('/properties', methods=['GET'])
+@auth.optional_user
 def get_properties():
     try:
-        response = supabase.table('properties').select('*').execute()
+        # Get the page number and page size from query parameters
+        page = int(request.args.get('page', 1))
+        page_size = int(request.args.get('page_size', 20))
+        
+        # Calculate the offset
+        offset = (page - 1) * page_size
+        
+        # Fetch properties with pagination
+        response = supabase.table('properties').select('*').range(offset, offset + page_size - 1).execute()
+        
         print(f"Properties Response: {response}")  # Debugging: print response
         if response.data:
             return jsonify(response.data)
@@ -33,6 +56,7 @@ def get_properties():
         return jsonify({'error': 'Failed to fetch properties'}), 500
 
 @app.route('/properties/<int:property_id>', methods=['GET'])
+@auth.optional_user
 def get_property_by_id(property_id):
     """Fetch a specific property by property_id."""
     try:
@@ -45,8 +69,6 @@ def get_property_by_id(property_id):
     except Exception as e:
         app.logger.error(f"Error fetching property {property_id}: {e}")
         return jsonify({'error': 'Failed to fetch the property'}), 500
-
-# --- USERS ROUTES ---
 def get_user_details(user_id):
     try:
         user_id = int(user_id)
@@ -64,6 +86,7 @@ def get_user_details(user_id):
         return None
 
 @app.route('/user/<user_id>', methods=['GET'])
+@auth.require_user
 def get_user(user_id):
     if not user_id.isdigit():
         app.logger.error(f"Invalid user_id format: {user_id}")
@@ -92,6 +115,7 @@ def get_user(user_id):
 #         print(f"Exception Details: {e}")  # Print exception details for debugging
 #         return jsonify({'error': 'Failed to fetch investments'}), 500
 @app.route('/investments', methods=['GET'])
+@auth.require_user
 def get_investments():
     try:
         # Fetch data from 'investments' table
@@ -198,7 +222,6 @@ def create_asset():
         app.logger.error(f"Error creating asset: {e}")
         return jsonify({'error': 'Failed to create asset'}), 500
 
-# --- PAYMENTS ROUTES ---
 @app.route('/payments', methods=['GET'])
 def get_payments():
     try:
@@ -290,7 +313,7 @@ def create_maintenance():
             'maintenance_date': maintenance_date
         }).execute()
 
-        print(f"Create Maintenance Response: {response}")  # Debugging: print response
+        print(f"Create Maintenance Response: {response}") 
 
         if response.status_code == 201:
             return jsonify(response.data), 201
