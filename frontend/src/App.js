@@ -23,7 +23,7 @@ const Header = () => (
 const HeroSection = () => (
   <section className="relative h-[600px] flex items-center justify-center bg-gradient-to-r from-primary to-primary-foreground text-white">
     <div className="absolute inset-0 overflow-hidden">
-      <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQ4SWiqtVVgnVF8q4da6i0-XgT3lGryJGHFZLi4iVc3fqAJlGERHeOP4uoNG0G8X-zAi8u_jUtnH3gsnqALzkTwL8K_q6hji0K6C7JjnQ" alt="Real Estate Investment" className="object-cover w-full h-full opacity-20" />
+      <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQ4SWiqtVVgnVF8q4da6i0-XgT3lGryJGHFZLi4iVc3fqAJlGERHeOP4uoNG0G8X-zAi8u_jUtnH3gsnqALzkTwL8K_q6hji0K6C7JjnQ" alt="Real Estate Investment" className="object-cover w-full h-full opacity-80" />
     </div>
     <div className="relative z-10 text-center space-y-6">
 
@@ -102,21 +102,21 @@ const PopularPropertiesSection = () => (
       <h2 className="text-3xl font-bold text-center mb-12">Popular Properties</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <PropertyCard
-          image="/placeholder.svg"
+          image="https://miamisrr.com/wp-content/uploads/2023/05/regis-1.jpg"
           title="Luxury Condo in Miami"
           location="Miami, FL"
           minInvestment={5000}
           roi={12}
         />
         <PropertyCard
-          image="/placeholder.svg"
+          image="https://images1.loopnet.com/i2/rzDC47-GS5PeVDMS5Xmj4Gnp6gFFc8dQ_PQFK4xXx4M/112/44-Exchange-Place-New-York-NY-Building-Photo-1-HighDefinition.jpg"
           title="Commercial Complex in NYC"
           location="New York, NY"
           minInvestment={10000}
           roi={15}
         />
         <PropertyCard
-          image="/placeholder.svg"
+          image="https://www.balivillas.com/images/villa/URID21914832001-TVG-Main.jpg"
           title="Beachfront Villa in Bali"
           location="Bali, Indonesia"
           minInvestment={2000}
