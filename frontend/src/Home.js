@@ -1,45 +1,55 @@
 import React from 'react';
-import { withAuthInfo, useRedirectFunctions, useLogoutFunction } from '@propelauth/react'
+import { useAuthInfo, useLogoutFunction, useRedirectFunctions } from '@propelauth/react';
 
-const Header = () => (
-  <header className="flex items-center justify-between px-6 py-4 bg-white shadow-sm">
-    <a href="/" className="flex items-center space-x-2">
-      <i className="h-8 w-8 text-primary">🏢</i>
-      <span className="text-xl font-bold">RealtyChain</span>
-    </a>
-    <nav className="hidden md:flex space-x-4">
-      <a href="/browse" className="text-sm font-medium hover:text-primary">Browse Properties</a>
-      <a href="/how-it-works" className="text-sm font-medium hover:text-primary">How It Works</a>
-      <a href="/investors" className="text-sm font-medium hover:text-primary">Investors Portal</a>
-      <a href="/developers" className="text-sm font-medium hover:text-primary">Developers Portal</a>
-      <a href="/help" className="text-sm font-medium hover:text-primary">Help/FAQ</a>
-    </nav>
-    <div className="flex space-x-2">
+const Header = () => {
+  const { isLoggedIn } = useAuthInfo();
+  const { redirectToLoginPage, redirectToSignupPage, redirectToAccountPage } = useRedirectFunctions();
+  const logout = useLogoutFunction();
 
-      <button className="border px-4 py-2">Log In</button>
-      <button className="bg-primary px-4 py-2 text-white">Sign Up</button>
-    </div>
-  </header>
-)
+  return (
+    <header className="flex items-center justify-between px-6 py-4 bg-white shadow-sm">
+      <a href="/" className="flex items-center space-x-2">
+        <i className="h-8 w-8 text-primary">🏢</i>
+        <span className="text-xl font-bold">RealtyChain</span>
+      </a>
+      <nav className="hidden md:flex space-x-4">
+        <a href="/browse" className="text-sm font-medium hover:text-primary">Browse Properties</a>
+        <a href="/how-it-works" className="text-sm font-medium hover:text-primary">How It Works</a>
+        <a href="/investors" className="text-sm font-medium hover:text-primary">Investors Portal</a>
+        <a href="/developers" className="text-sm font-medium hover:text-primary">Developers Portal</a>
+        <a href="/help" className="text-sm font-medium hover:text-primary">Help/FAQ</a>
+      </nav>
+      <div className="flex space-x-2">
+        {isLoggedIn ? (
+          <button onClick={logout}>Log Out</button>
+        ) : (
+          <>
+            <button className="border px-4 py-2" onClick={() => redirectToLoginPage()}>Log In</button>
+            <button className="border bg-primary px-4 py-2 " onClick={() => redirectToSignupPage()}>Sign Up</button>
+          </>
+        )}
+      </div>
+    </header>
+  );
+};
 
 const HeroSection = () => (
   <section className="relative h-[600px] flex items-center justify-center bg-gradient-to-r from-primary to-primary-foreground text-white bg-black">
     <div className="absolute inset-0 overflow-hidden">
-      <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQ4SWiqtVVgnVF8q4da6i0-XgT3lGryJGHFZLi4iVc3fqAJlGERHeOP4uoNG0G8X-zAi8u_jUtnH3gsnqALzkTwL8K_q6hji0K6C7JjnQ" alt="Real Estate Investment" className="object-cover w-full h-full opacity-60" />
+      <img src="/Hero.jpg"alt="Real Estate Investment" className="object-cover w-full h-full opacity-70" />
     </div>
     <div className="relative z-10 text-center space-y-6">
-
       <h1 className="text-5xl font-bold">Democratizing Real Estate Investment Through Fintech</h1>
       <p className="text-xl max-w-2xl mx-auto">Invest in premium properties with as little as $100. Powered by blockchain and AI.</p>
       <div className="flex justify-center space-x-4">
-        <button className="bg-white text-primary hover:bg-gray-100 px-6 py-3 text-black">Get Started</button>
-        <button className="border-white px-6 py-3 text-white border">
+        <button className="bg-white text-primary hover:bg-gray-100 px-6 py-3 text-black"   onClick={() => window.location.href = '/browse'}>Get Started</button>
+        <button className="border-white px-6 py-3 text-white border"   onClick={() => window.location.href = '/how-it-works'}>
           <i className="mr-2">▶️</i> Watch How It Works
         </button>
       </div>
     </div>
   </section>
-)
+);
 
 const FeatureCard = ({ icon, title, description }) => (
   <div className="bg-white shadow rounded-lg p-4">
@@ -49,7 +59,7 @@ const FeatureCard = ({ icon, title, description }) => (
     </div>
     <p>{description}</p>
   </div>
-)
+);
 
 const FeaturesSection = () => (
   <section className="py-16 bg-gray-50">
@@ -74,12 +84,12 @@ const FeaturesSection = () => (
         <FeatureCard
           icon={<i className="text-primary">⭐</i>}
           title="Automated Dividends"
-          description="Receive your share of rental income and property Homereciation automatically."
+          description="Receive your share of rental income and property appreciation automatically."
         />
       </div>
     </div>
   </section>
-)
+);
 
 const PropertyCard = ({ image, title, location, minInvestment, roi }) => (
   <div className="bg-white shadow-lg rounded-lg">
@@ -96,7 +106,7 @@ const PropertyCard = ({ image, title, location, minInvestment, roi }) => (
       <button className="w-full bg-primary text-white py-2 rounded">View Details</button>
     </div>
   </div>
-)
+);
 
 const PopularPropertiesSection = () => (
   <section className="py-16">
@@ -127,7 +137,7 @@ const PopularPropertiesSection = () => (
       </div>
     </div>
   </section>
-)
+);
 
 const TestimonialCard = ({ name, role, quote }) => (
   <div className="bg-white shadow-lg rounded-lg p-6">
@@ -137,7 +147,7 @@ const TestimonialCard = ({ name, role, quote }) => (
       <p className="text-sm text-muted">{role}</p>
     </div>
   </div>
-)
+);
 
 const TestimonialsSection = () => (
   <section className="py-16 bg-gray-50">
@@ -162,7 +172,7 @@ const TestimonialsSection = () => (
       </div>
     </div>
   </section>
-)
+);
 
 const Footer = () => (
   <footer className="bg-gray-900 text-white py-12">
@@ -205,17 +215,21 @@ const Footer = () => (
       </div>
     </div>
   </footer>
-)
+);
 
-const Home = () => (
-  <div>
-    <Header />
-    <HeroSection />
-    <FeaturesSection />
-    <PopularPropertiesSection />
-    <TestimonialsSection />
-    <Footer />
-  </div>
-)
+const Home = () => {
+  const { isLoggedIn } = useAuthInfo();
+
+  return (
+    <div>
+      <Header />
+      <HeroSection />
+      <FeaturesSection />
+      <PopularPropertiesSection />
+      <TestimonialsSection />
+      <Footer />
+    </div>
+  );
+};
 
 export default Home;

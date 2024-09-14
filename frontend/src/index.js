@@ -6,12 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from "@propelauth/react";
 import BrowsePropertiesPage from './BrowseProperties';
 import HowItWorks from './howitworks';
-// import FAQ from './help';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SearchResults from './PropertySearch';
 import ListingPage from './propertyDetail';
+import Dashboard from './Dashboard';
+const API_KEY = process.env.AUTH_URL;
 export default function App() {
   return (
+    
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<Home />}/>
@@ -19,6 +21,7 @@ export default function App() {
           <Route path="/how-it-works" element={<HowItWorks />}/> 
           <Route path="/search" element={<SearchResults />} />
           <Route path="/listing/:id" element={<ListingPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
@@ -27,11 +30,11 @@ export default function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+<AuthProvider authUrl="https://4938244.propelauthtest.com">
 <App />
+</AuthProvider>
+
 );
 
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
