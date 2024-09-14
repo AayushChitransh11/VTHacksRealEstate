@@ -8,6 +8,7 @@ frontend/node_modules
 # testing
 /coverage
 
+venv
 # production
 /build
 
