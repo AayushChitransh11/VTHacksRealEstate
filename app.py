@@ -46,19 +46,18 @@ def get_user_details(user_id):
         print(f"Error fetching user details: {e}")
         return None
 
-@app.route('/user/<user_id>', methods=['POST'])
+@app.route('/user/<user_id>', methods=['GET'])
 def get_user(user_id):
-    # Remove the Authorization check for now
-    # Validate user_id
+
     if not user_id.isdigit():
         print(f"Invalid user_id format: {user_id}")
-        abort(400)  # Bad Request
+        abort(400)  
 
     user_details = get_user_details(user_id)
     if user_details:
         return jsonify(user_details), 200
     else:
-        abort(404)  # Not Found
+        abort(404) 
 
 if __name__ == '__main__':
     app.run(debug=True)
