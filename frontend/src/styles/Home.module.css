@@ -1,0 +1,46 @@
+/* styles/Home.module.css */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+  }
+  
+  .propertyList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .propertyCard {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    width: calc(50% - 2rem);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: #fff;
+  }
+  
+  .propertyImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .purchaseSection {
+    margin-top: 2rem;
+  }
+  
+  button {
+    background-color: #0070f3;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #005bb5;
+  }
+  
