@@ -19,6 +19,11 @@ SUPABASE_KEY = os.getenv("SUPABASE_ANON_KEY")
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 
+@app.route('/api/data', methods=['GET'])
+def get_data():
+    data = {"message": "Hello from Flask"}
+    return jsonify(data)
+
 @app.route('/')
 def home():
     return '<h1>Home Page</h1>'

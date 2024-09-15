@@ -1,8 +1,11 @@
-import React from 'react';
+//import React from 'react';
+import { useState, useEffect } from 'react';
 import { useAuthInfo, useLogoutFunction, useRedirectFunctions } from '@propelauth/react';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+
+
 
 
 const Button = ({ onClick, children, className = '' }) => (
@@ -181,17 +184,51 @@ const TestimonialsSection = () => (
   </section>
 );
 
+// const Home = () => {
+//   const { isLoggedIn } = useAuthInfo();
+
+//   return (
+//     <div>
+//       <Header />
+//       <HeroSection />
+//       <FeaturesSection />
+//       <PopularPropertiesSection />
+//       <TestimonialsSection />
+//       <Footer />
+//     </div>
+//   );
+// };
+
+// export default Home;
+
+
 const Home = () => {
   const { isLoggedIn } = useAuthInfo();
+  const [backendData, setBackendData] = useState(null);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:5000/api/data')  // Updated URL to Flask backend
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setBackendData(data.message);  // Assuming the response has a `message` key
+      })
+      .catch((error) => console.error('Error fetching data:', error));
+  }, []);
 
   return (
     <div>
-      <Header />
-      <HeroSection />
-      <FeaturesSection />
-      <PopularPropertiesSection />
-      <TestimonialsSection />
-      <Footer />
+      <h1>Backend Connection Test</h1>
+      {backendData ? (
+        <p>Backend says: {backendData}</p>
+      ) : (
+        <p>Loading data from backend...</p>
+      )}
+      {/* Your existing UI components */}
     </div>
   );
 };
