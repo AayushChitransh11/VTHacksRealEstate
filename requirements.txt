@@ -6,3 +6,4 @@ propelauth_flask
 scikit-learn 
 numpy
 pandas
+gunicorn
