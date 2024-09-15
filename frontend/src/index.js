@@ -11,6 +11,11 @@ import SearchResults from './PropertySearch';
 import ListingPage from './propertyDetail';
 import Dashboard from './Dashboard';
 import Help from './help';
+import PropertyPage from './property';
+import ConfirmInvestment from './ConfirmInvestment';
+import InvestmentPage from './Investment';
+
+
 const API_KEY = process.env.AUTH_URL;
 export default function App() {
   return (
@@ -22,6 +27,10 @@ export default function App() {
           <Route path="/how-it-works" element={<HowItWorks />}/> 
           <Route path="/search" element={<SearchResults />} />
           <Route path="/listing/:id" element={<ListingPage />} />
+          <Route path="/property" element={<PropertyPage />} />
+          <Route path="/confirmInvestment" element={<ConfirmInvestment />} />
+          <Route path="/investment" element={<InvestmentPage />} />
+
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path='/help' element={<Help/>}/>
       </Routes>
