@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import Header from './Header';
+import Footer from './Footer';
 
 const PropertyHeader = ({ title, location, type, goal }) => (
   <div className="text-center mb-8">
@@ -16,12 +19,11 @@ const PropertyHeader = ({ title, location, type, goal }) => (
 );
 
 const PropertyCarousel = ({ images }) => (
-    <div className="relative w-full h-96 mb-8">
-      <img src={images[0]} alt="Property Image" className="w-full h-full object-cover rounded-lg" />
-      {/* Add carousel logic here */}
-    </div>
-  );
-
+  <div className="relative w-full h-96 mb-8">
+    <img src={images[0]} alt="Property Image" className="w-full h-full object-cover rounded-lg" />
+    {/* Add carousel logic here */}
+  </div>
+);
 
 const InvestmentMetrics = ({ currentFunding, targetAmount, remainingTime, investors, minInvestment }) => (
   <div className="bg-white shadow-md p-6 rounded-lg">
@@ -59,7 +61,6 @@ const InvestmentMetrics = ({ currentFunding, targetAmount, remainingTime, invest
   </div>
 );
 
-
 const PropertyDetails = ({ description, features, propertyData }) => (
   <div className="bg-white shadow-md p-6 rounded-lg">
     <h2 className="text-2xl font-bold mb-4">Property Details</h2>
@@ -80,7 +81,6 @@ const PropertyDetails = ({ description, features, propertyData }) => (
     </ul>
   </div>
 );
-
 
 const InvestmentForm = ({ minInvestment, maxInvestment }) => {
   const [investmentAmount, setInvestmentAmount] = useState(minInvestment);
@@ -162,57 +162,64 @@ const Footer = () => (
 
 
 const PropertyPage = () => {
-    const property = {
-      title: 'Modern Family Home',
-      location: 'New York, USA',
-      type: 'Residential',
-      goal: 500000,
-      images: ['https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'],
-      description: 'A beautiful family home located in the heart of New York City...',
-      features: ['Swimming Pool', '3 Car Garage', 'Large Garden'],
-      propertyData: {
-        homeType: 'Single-Family Home',
-        homeSize: '3,500 sqft',
-        yearBuilt: '2015',
-        hoaFees: '$200/month',
-        daysOnMarket: 30,
-        lotSize: '7,000 sqft',
-      },
-      investmentDetails: {
-        currentFunding: 250000,
-        targetAmount: 500000,
-        remainingTime: 45,
-        investors: 75,
-        minInvestment: 5000,
-      },
-    };
-  
-    return (
-      <div>
-        <Header />
-        <main className="container mx-auto p-4">
-          <PropertyHeader
-            title={property.title}
-            location={property.location}
-            type={property.type}
-            goal={property.goal}
-          />
-          <PropertyCarousel images={property.images} />
-          <InvestmentMetrics {...property.investmentDetails} />
-          <PropertyDetails
-            description={property.description}
-            features={property.features}
-            propertyData={property.propertyData}
-          />
-          <InvestmentForm
-            minInvestment={property.investmentDetails.minInvestment}
-            maxInvestment={property.investmentDetails.targetAmount}
-          />
-        </main>
-        <Footer />
-      </div>
-    );
-  };
-  
-  export default PropertyPage;
-  
+  const { propertyId } = useParams();
+  const [property, setProperty] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (propertyId) {
+      axios.get(`http://127.0.0.1:5000/properties/${propertyId}`)
+        .then(response => {
+          setProperty(response.data);
+        })
+        .catch(err => {
+          setError('Failed to fetch property data');
+          console.error(err);
+        });
+    }
+  }, [propertyId]);
+
+  if (error) return <div>{error}</div>;
+  if (!property) return <div>Loading...</div>;
+
+  return (
+    <div>
+      <Header />
+      <main className="container mx-auto p-4">
+        <PropertyHeader
+          title={property.property_name}
+          location={property.address}
+          type={property.property_location}
+          goal={property.property_price}
+        />
+        <PropertyCarousel images={['https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2']} />
+        <InvestmentMetrics
+          currentFunding={property.totalprice}
+          targetAmount={property.property_price}
+          remainingTime={45} // This should be calculated based on your data
+          investors={75} // You may need to fetch or calculate this
+          minInvestment={5000} // Adjust based on your actual data
+        />
+        <PropertyDetails
+          description={property.description}
+          features={property.propertyDetails.additionalFeatures}
+          propertyData={{
+            homeType: property.propertyDetails.homeType,
+            homeSize: `${property.sqft} sqft`,
+            yearBuilt: property.propertyDetails.yearBuilt,
+            hoaFees: property.propertyDetails.hoaFees,
+            daysOnMarket: property.daysOnMarket,
+            lotSize: 'N/A' // Adjust based on your data
+          }}
+        />
+        <InvestmentForm
+          minInvestment={5000} // Adjust based on your actual data
+          maxInvestment={property.property_price}
+        />
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default PropertyPage;

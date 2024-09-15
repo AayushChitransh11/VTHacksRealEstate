@@ -27,7 +27,7 @@ export default function App() {
           <Route path="/how-it-works" element={<HowItWorks />}/> 
           <Route path="/search" element={<SearchResults />} />
           <Route path="/listing/:id" element={<ListingPage />} />
-          <Route path="/property" element={<PropertyPage />} />
+          <Route path="/property/:propertyId" element={<PropertyPage />} />
           <Route path="/confirmInvestment" element={<ConfirmInvestment />} />
           <Route path="/investment" element={<InvestmentPage />} />
           <Route path="/dashboard" element={<Dashboard />} />

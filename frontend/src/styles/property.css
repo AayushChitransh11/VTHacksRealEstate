@@ -1,0 +1,29 @@
+/* property.css */
+.property-page {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.property-header {
+    margin-bottom: 20px;
+}
+
+.property-carousel {
+    margin-bottom: 20px;
+}
+
+.investment-metrics, .property-details, .investment-form {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+.loading {
+    font-style: italic;
+}
