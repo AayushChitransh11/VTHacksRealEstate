@@ -8,7 +8,7 @@ import BrowsePropertiesPage from './BrowseProperties';
 import HowItWorks from './howitworks';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SearchResults from './PropertySearch';
-import ListingPage from './propertyDetail';
+import ListingPage from './ListingPage';
 import Dashboard from './Dashboard';
 import Help from './help';
 import PropertyPage from './property';

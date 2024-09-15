@@ -4,10 +4,9 @@ import Header from './Header';
 import Footer from './Footer';
 
 const ConfirmInvestment = ({ property = {}, investmentAmount = 0 }) => {
-  // Fallback values if property is undefined or incomplete
   const propertyTitle = property.title || 'Unknown Property';
   const propertyLocation = property.location || 'Unknown Location';
-  const propertyGoal = property.goal || 1; // Avoid division by zero
+  const propertyGoal = property.goal || 1; 
   const ownershipPercentage = ((investmentAmount / propertyGoal) * 100).toFixed(2);
 
   return (
