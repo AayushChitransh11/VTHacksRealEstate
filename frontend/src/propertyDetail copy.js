@@ -122,7 +122,7 @@ const ListingPage = () => {
             className="bg-blue-600 text-white w-full px-6 py-4 rounded-lg font-semibold hover:bg-blue-700"
             // onClick={() => alert(`You are buying ${listingData.propertyName} for $${listingData.price.toLocaleString()}!`)}
           >
-            Buy Now
+            Start Crowdfunding
           </button>
         </div>
 
