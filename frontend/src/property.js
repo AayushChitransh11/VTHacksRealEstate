@@ -14,7 +14,7 @@ const PropertyHeader = ({ title, location, type, goal }) => (
       <span>•</span>
       <span>Goal: ${goal.toLocaleString()}</span>
     </div>
-    <button className="bg-blue-600 text-white py-3 px-6 mt-4 rounded">Invest Now</button>
+    {/* <button className="bg-blue-600 text-white py-3 px-6 mt-4 rounded">Invest Now</button> */}
   </div>
 );
 

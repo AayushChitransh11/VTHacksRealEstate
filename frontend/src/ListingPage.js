@@ -54,22 +54,10 @@ const ListingPage = () => {
       <div className="max-w-5xl mx-auto p-4">
         {/* Images Placeholder */}
         <div className="grid grid-cols-3 gap-4 mb-4">
-          <img
-            src="https://via.placeholder.com/600x400"
-            alt="Property"
-            className="col-span-2 row-span-2 w-full h-full object-cover rounded-lg"
-          />
-          <img
-            src="https://via.placeholder.com/300x200"
-            alt="Property"
-            className="w-full h-full object-cover rounded-lg"
-          />
-          <img
-            src="https://via.placeholder.com/300x200"
-            alt="Property"
-            className="w-full h-full object-cover rounded-lg"
-          />
-        </div>
+        <img src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Living Room" className="col-span-2 row-span-2 w-full h-full object-cover rounded-lg" />
+        <img src="https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Kitchen" className="w-full h-full object-cover rounded-lg" />
+        <img src="https://images.pexels.com/photos/237371/pexels-photo-237371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Bedroom" className="w-full h-full object-cover rounded-lg" />
+      </div>
 
         {/* Price and Address */}
         <div className="flex justify-between items-center mb-4">
@@ -108,7 +96,7 @@ const ListingPage = () => {
         {/* Crowdfunding Button */}
         <div className="mt-4 text-right">
           <Link
-            to={`/property/${id}/crowdfunding`}
+            to={`/property/${id}`}
             className="bg-blue-600 text-white w-full px-6 py-4 rounded-lg font-semibold hover:bg-blue-700"
           >
             Start Crowdfunding

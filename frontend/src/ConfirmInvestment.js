@@ -50,8 +50,8 @@ const ConfirmInvestment = ({ property = {}, investmentAmount = 0 }) => {
           </div>
 
           <div className="text-center mt-6">
-            <a href="/property" className="text-blue-600 underline">
-              Back to Properties
+            <a href="/browse" className="text-blue-600 underline">
+              Back to Browse
             </a>
           </div>
         </div>
