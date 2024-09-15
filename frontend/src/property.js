@@ -114,51 +114,6 @@ const InvestmentForm = ({ minInvestment, maxInvestment }) => {
   );
 };
 
-const Footer = () => (
-  <footer className="bg-gray-900 text-white py-12 mt-12">
-    <div className="container mx-auto px-4">
-      <div className="grid md:grid-cols-4 gap-8">
-        <div>
-          <h3 className="font-bold text-lg mb-4">HomeRun</h3>
-          <p className="text-sm text-gray-400">
-            Democratizing real estate investment through blockchain and AI.
-          </p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-4">Quick Links</h4>
-          <ul className="space-y-2">
-            <li>
-              <a href="/about" className="text-sm hover:text-blue-400">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="/how-it-works" className="text-sm hover:text-blue-400">
-                How It Works
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-4">Legal</h4>
-          <ul className="space-y-2">
-            <li>
-              <a href="/terms" className="text-sm hover:text-blue-400">
-                Terms of Service
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-4">Connect With Us</h4>
-          <div className="flex space-x-4">
-            {/* Social media icons */}
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-);
 
 
 const PropertyPage = () => {

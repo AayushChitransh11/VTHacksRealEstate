@@ -19,10 +19,10 @@ SUPABASE_KEY = os.getenv("SUPABASE_ANON_KEY")
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 
-@app.route('/api/data', methods=['GET'])
-def get_data():
-    data = {"message": "Hello from Flask"}
-    return jsonify(data)
+# @app.route('/api/data', methods=['GET'])
+# def get_data():
+#     data = {"message": "Hello from Flask"}
+#     return jsonify(data)
 
 @app.route('/')
 def home():
@@ -422,4 +422,4 @@ def recommend_properties():
 
 
 if __name__ == '__main__':
-    app.run(debug=False,host='0.0.0.0')
+    app.run(debug=True)

@@ -31,7 +31,7 @@ const HeroSection = () => {
           Democratizing Real Estate Investment Through Fintech
         </h1>
         <p className="text-xl max-w-2xl mx-auto">
-          Invest in premium properties with as little as $100. Powered by blockchain and AI.
+          Invest in premium properties with as little as $100. Powered by co-ownership and AI.
         </p>
         <div className="flex justify-center space-x-4">
           {/* Navigate to the browse page */}
@@ -44,7 +44,7 @@ const HeroSection = () => {
 
           {/* Action for watching the video */}
           <Button
-            onClick={() => alert('Watch video')}
+          onClick={() => navigate('/how-it-works')}
             className="border-white text-white border hover:bg-white hover:text-black"
           >
             <i className="mr-2">▶️</i> Watch How It Works
@@ -73,7 +73,7 @@ const FeaturesSection = () => (
         <FeatureCard
           icon={<i className="text-primary">📊</i>}
           title="Fractional Ownership"
-          description="Own a piece of premium real estate with blockchain-backed fractional ownership."
+          description="Own a piece of premium real estate with co-ownership-backed fractional ownership."
         />
         <FeatureCard
           icon={<i className="text-primary">💵</i>}
@@ -83,7 +83,7 @@ const FeaturesSection = () => (
         <FeatureCard
           icon={<i className="text-primary">🔒</i>}
           title="Secure Digital Wallets"
-          description="Manage your investments and earnings with our secure blockchain-based digital wallets."
+          description="Manage your investments and earnings with our secure co-ownership-based digital wallets."
         />
         <FeatureCard
           icon={<i className="text-primary">⭐</i>}
@@ -204,31 +204,15 @@ const TestimonialsSection = () => (
 
 const Home = () => {
   const { isLoggedIn } = useAuthInfo();
-  const [backendData, setBackendData] = useState(null);
-
-  useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/data')  // Updated URL to Flask backend
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setBackendData(data.message);  // Assuming the response has a `message` key
-      })
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
 
   return (
     <div>
-      <h1>Backend Connection Test</h1>
-      {backendData ? (
-        <p>Backend says: {backendData}</p>
-      ) : (
-        <p>Loading data from backend...</p>
-      )}
-      {/* Your existing UI components */}
+      <Header />
+      <HeroSection />
+      <FeaturesSection />
+      <PopularPropertiesSection />
+      <TestimonialsSection />
+      <Footer />
     </div>
   );
 };

@@ -73,6 +73,24 @@ const FAQSection = () => {
       ]
     },
     {
+      id: 'blockchain',
+      title: 'Blockchain Technology',
+      questions: [
+        {
+          q: "What is blockchain?",
+          a: "Blockchain is a decentralized, digital ledger technology that records transactions across many computers. It's known for its security, transparency, and immutability. Each 'block' in the chain contains a number of transactions, and every time a new transaction occurs, a record of that transaction is added to every participant's ledger."
+        },
+        {
+          q: "How does HomeRun use blockchain?",
+          a: "HomeRun utilizes blockchain technology in several ways:\n1. Tokenization of real estate assets\n2. Secure and transparent transaction records\n3. Smart contracts for automated processes (e.g., rent distribution)\n4. Fractional ownership management\n5. Rapid and secure cross-border transactions\nThis technology allows us to make real estate investment more accessible, transparent, and efficient."
+        },
+        {
+          q: "How does blockchain enhance security on the platform?",
+          a: "Blockchain enhances security on HomeRun through:\n1. Immutable transaction records: Once recorded, data cannot be altered\n2. Decentralization: No single point of failure\n3. Cryptographic security: Advanced encryption protects data\n4. Transparency: All transactions are visible, reducing fraud risk\n5. Smart contracts: Automated, tamper-proof execution of agreements\nThese features combine to create a highly secure environment for real estate investments."
+        }
+      ]
+    },
+    {
       id: 'account',
       title: 'Account Management',
       questions: [
@@ -186,7 +204,18 @@ const Help = () => (
     <Header />
     <Introduction />
     <FAQSection />
-    <SupportContact />
+    <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Chat Bot</h2>
+          <iframe
+            src="https://copilotstudio.microsoft.com/environments/Default-6a95bf9e-9937-4422-8afb-6a9f6f4da7fa/bots/cre89_copilotHomeRun/webchat?__version__=2"
+            frameBorder="0"
+            style={{ width: '100%', height: '500px' }}
+            title="Interactive Demo"
+          ></iframe>
+        </div>
+      </section>
+
     <Footer />
   </div>
 );

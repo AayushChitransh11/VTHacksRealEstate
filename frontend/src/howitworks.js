@@ -36,7 +36,7 @@ const StepByStepGuide = () => (
             </div>
           </div>
           <div className="p-4">
-            <p>Choose your investment amount and purchase fractional ownership through our secure blockchain platform.</p>
+            <p>Choose your investment amount and purchase fractional ownership through our secure co-ownership platform.</p>
           </div>
         </div>
         <div className="bg-white shadow-lg rounded-lg mb-4">
@@ -84,7 +84,7 @@ const Infographics = () => (
           </div>
           <div className="p-4">
             <img src="/placeholder.svg" alt="Smart Contracts Infographic" className="w-full h-auto" />
-            <p className="mt-4">Blockchain-powered smart contracts ensure transparent, secure, and automated transactions for all your real estate investments.</p>
+            <p className="mt-4">co-ownership-powered smart contracts ensure transparent, secure, and automated transactions for all your real estate investments.</p>
           </div>
         </div>
       </div>
@@ -140,7 +140,7 @@ const CallToAction = () => (
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <h3 className="font-bold text-lg mb-4">HomeRun</h3>
-            <p className="text-sm text-gray-400">Democratizing real estate investment through blockchain and AI.</p>
+            <p className="text-sm text-gray-400">Democratizing real estate investment through co-ownership and AI.</p>
           </div>
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
