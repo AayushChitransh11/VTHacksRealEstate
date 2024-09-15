@@ -44,18 +44,33 @@ def get_only_prop_location():
 # --- PROPERTIES ROUTES ---
 @app.route('/properties', methods=['GET'])
 # @auth.optional_user
+# def get_properties():
+#     try:
+#         # Get the page number and page size from query parameters
+#         page = int(request.args.get('page', 1))
+#         page_size = int(request.args.get('page_size', 20))
+        
+#         # Calculate the offset
+#         offset = (page - 1) * page_size
+        
+#         # Fetch properties with pagination
+#         response = supabase.table('properties').select('*').range(offset, offset + page_size - 1).execute()
+        
+#         print(f"Properties Response: {response}")  # Debugging: print response
+#         if response.data:
+#             return jsonify(response.data)
+#         else:
+#             return jsonify([]), 204
+#     except Exception as e:
+#         app.logger.error(f"Error fetching properties: {e}")
+#         return jsonify({'error': 'Failed to fetch properties'}), 500
+#     @app.route('/properties', methods=['GET'])
 def get_properties():
     try:
-        # Get the page number and page size from query parameters
         page = int(request.args.get('page', 1))
         page_size = int(request.args.get('page_size', 20))
-        
-        # Calculate the offset
         offset = (page - 1) * page_size
-        
-        # Fetch properties with pagination
         response = supabase.table('properties').select('*').range(offset, offset + page_size - 1).execute()
-        
         print(f"Properties Response: {response}")  # Debugging: print response
         if response.data:
             return jsonify(response.data)
@@ -64,6 +79,7 @@ def get_properties():
     except Exception as e:
         app.logger.error(f"Error fetching properties: {e}")
         return jsonify({'error': 'Failed to fetch properties'}), 500
+
 
 @app.route('/properties/<int:property_id>', methods=['GET'])
 # @auth.optional_user
