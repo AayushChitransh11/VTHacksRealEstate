@@ -3,3 +3,6 @@ Werkzeug
 supabase
 python-dotenv
 propelauth_flask
+scikit-learn 
+numpy
+pandas

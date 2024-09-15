@@ -4,8 +4,12 @@ import os
 from dotenv import load_dotenv
 from flask_cors import CORS  # Import CORS
 from propelauth_flask import init_auth,current_user
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 load_dotenv()
+import numpy as np
 from flask_cors import CORS
+vectorizer = TfidfVectorizer(stop_words='english', max_features=1000)
 
 
 app = Flask(__name__)
@@ -291,6 +295,31 @@ def create_maintenance():
     except Exception as e:
         app.logger.error(f"Error creating maintenance record: {e}")
         return jsonify({'error': 'Failed to create maintenance record'}), 500
+
+
+@app.route('/recommend', methods=['POST'])
+def recommend_properties():
+    user_input = request.json.get('description')
+    response = supabase.table('properties').select('highlights, description').execute()
+    if response.error:
+        return jsonify({"error": response.error.message}), 500
+    
+    properties = response.data
+    property_texts = [" ".join(property['highlights']) + " " + property['description'] for property in properties]
+    tfidf_matrix = vectorizer.fit_transform(property_texts)
+    user_query_vector = vectorizer.transform([user_input])
+    similarity_scores = cosine_similarity(user_query_vector, tfidf_matrix)
+    best_matches = np.argsort(similarity_scores[0])[::-1]  
+    recommendations = []
+    for idx in best_matches[:5]:
+        recommendations.append({
+            "property": properties[idx],
+            "similarity_score": similarity_scores[0][idx]
+        })
+
+    return jsonify(recommendations)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
