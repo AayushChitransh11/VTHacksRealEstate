@@ -167,17 +167,17 @@ const TestimonialsSection = () => (
         <TestimonialCard
           name="John Doe"
           role="Investor"
-          quote="RealtyChain has revolutionized the way I invest in real estate. The fractional ownership model allows me to diversify my portfolio like never before."
+          quote="HomeRun has revolutionized the way I invest in real estate. The fractional ownership model allows me to diversify my portfolio like never before."
         />
         <TestimonialCard
           name="Jane Smith"
           role="Property Developer"
-          quote="As a developer, RealtyChain has opened up new avenues for funding our projects. The platform's transparency and efficiency are unmatched."
+          quote="As a developer, HomeRun has opened up new avenues for funding our projects. The platform's transparency and efficiency are unmatched."
         />
         <TestimonialCard
           name="Mike Johnson"
           role="First-time Investor"
-          quote="I never thought I could invest in real estate with such a small amount. RealtyChain has made it possible for me to start building my wealth."
+          quote="I never thought I could invest in real estate with such a small amount. HomeRun has made it possible for me to start building my wealth."
         />
       </div>
     </div>

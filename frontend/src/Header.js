@@ -13,7 +13,7 @@ const Header = () => {
       <header className="flex items-center justify-between px-6 py-4 bg-white shadow-sm">
         <a href="/" className="flex items-center space-x-2">
           <i className="h-8 w-8 text-primary">🏢</i>
-          <span className="text-xl font-bold">RealtyChain</span>
+          <span className="text-xl font-bold">HomeRun</span>
         </a>
         <nav className="hidden md:flex space-x-4 text-base">
           <a href="/browse" className="font-medium hover:text-primary">Browse Properties</a>

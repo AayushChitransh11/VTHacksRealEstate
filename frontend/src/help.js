@@ -8,7 +8,7 @@ const Introduction = () => (
     <div className="container mx-auto px-4">
       <h1 className="text-4xl font-bold text-center mb-6">Help Center & FAQs</h1>
       <p className="text-center text-lg mb-8 max-w-2xl mx-auto">
-        Welcome to our Help Center. Here you can find answers to common questions and get help with using the RealtyChain platform.
+        Welcome to our Help Center. Here you can find answers to common questions and get help with using the HomeRun platform.
       </p>
       <div className="max-w-xl mx-auto">
         <div className="relative">
@@ -34,15 +34,15 @@ const FAQSection = () => {
       questions: [
         {
           q: "How do I get started with investing?",
-          a: "To start investing with RealtyChain, follow these steps:\n1. Create an account on our platform\n2. Complete the verification process\n3. Browse available properties\n4. Choose a property and decide on your investment amount\n5. Complete the transaction using your preferred payment method\n6. Monitor your investment through your dashboard"
+          a: "To start investing with HomeRun, follow these steps:\n1. Create an account on our platform\n2. Complete the verification process\n3. Browse available properties\n4. Choose a property and decide on your investment amount\n5. Complete the transaction using your preferred payment method\n6. Monitor your investment through your dashboard"
         },
         {
           q: "What investment options are available?",
-          a: "RealtyChain offers various investment options including:\n- Residential properties (apartments, houses)\n- Commercial properties (office spaces, retail)\n- Industrial properties (warehouses, factories)\n- Mixed-use developments\n- Real Estate Investment Trusts (REITs)\nEach option has different risk profiles and potential returns."
+          a: "HomeRun offers various investment options including:\n- Residential properties (apartments, houses)\n- Commercial properties (office spaces, retail)\n- Industrial properties (warehouses, factories)\n- Mixed-use developments\n- Real Estate Investment Trusts (REITs)\nEach option has different risk profiles and potential returns."
         },
         {
           q: "What is the minimum investment required?",
-          a: "The minimum investment on RealtyChain starts at $100 for most properties. This low entry point allows investors to diversify their portfolio across multiple properties. Some premium or high-value properties may have a higher minimum investment requirement."
+          a: "The minimum investment on HomeRun starts at $100 for most properties. This low entry point allows investors to diversify their portfolio across multiple properties. Some premium or high-value properties may have a higher minimum investment requirement."
         },
         {
           q: "What are the risk factors involved in investing?",
@@ -56,7 +56,7 @@ const FAQSection = () => {
       questions: [
         {
           q: "How do I withdraw funds?",
-          a: "To withdraw funds:\n1. Log into your RealtyChain account\n2. Navigate to the 'Wallet' or 'Finances' section\n3. Click on 'Withdraw Funds'\n4. Enter the amount you wish to withdraw\n5. Select your preferred withdrawal method\n6. Confirm the transaction\nNote: Ensure your account is fully verified before attempting a withdrawal."
+          a: "To withdraw funds:\n1. Log into your HomeRun account\n2. Navigate to the 'Wallet' or 'Finances' section\n3. Click on 'Withdraw Funds'\n4. Enter the amount you wish to withdraw\n5. Select your preferred withdrawal method\n6. Confirm the transaction\nNote: Ensure your account is fully verified before attempting a withdrawal."
         },
         {
           q: "How long do withdrawals take to process?",
@@ -64,29 +64,11 @@ const FAQSection = () => {
         },
         {
           q: "Are there any fees for withdrawals?",
-          a: "RealtyChain does not charge fees for withdrawals. However, your bank or payment provider may apply their own fees. For cryptocurrency withdrawals, network fees may apply. Always check the final amount before confirming your withdrawal."
+          a: "HomeRun does not charge fees for withdrawals. However, your bank or payment provider may apply their own fees. For cryptocurrency withdrawals, network fees may apply. Always check the final amount before confirming your withdrawal."
         },
         {
           q: "What should I do if I'm having issues with my withdrawal?",
           a: "If you're experiencing issues with your withdrawal:\n1. Check that your account is fully verified\n2. Ensure you have sufficient funds for the withdrawal\n3. Verify that your withdrawal method is correctly set up\n4. Check our system status page for any known issues\nIf problems persist, please contact our support team through the Support Contact form."
-        }
-      ]
-    },
-    {
-      id: 'blockchain',
-      title: 'Blockchain Technology',
-      questions: [
-        {
-          q: "What is blockchain?",
-          a: "Blockchain is a decentralized, digital ledger technology that records transactions across many computers. It's known for its security, transparency, and immutability. Each 'block' in the chain contains a number of transactions, and every time a new transaction occurs, a record of that transaction is added to every participant's ledger."
-        },
-        {
-          q: "How does RealtyChain use blockchain?",
-          a: "RealtyChain utilizes blockchain technology in several ways:\n1. Tokenization of real estate assets\n2. Secure and transparent transaction records\n3. Smart contracts for automated processes (e.g., rent distribution)\n4. Fractional ownership management\n5. Rapid and secure cross-border transactions\nThis technology allows us to make real estate investment more accessible, transparent, and efficient."
-        },
-        {
-          q: "How does blockchain enhance security on the platform?",
-          a: "Blockchain enhances security on RealtyChain through:\n1. Immutable transaction records: Once recorded, data cannot be altered\n2. Decentralization: No single point of failure\n3. Cryptographic security: Advanced encryption protects data\n4. Transparency: All transactions are visible, reducing fraud risk\n5. Smart contracts: Automated, tamper-proof execution of agreements\nThese features combine to create a highly secure environment for real estate investments."
         }
       ]
     },
@@ -96,7 +78,7 @@ const FAQSection = () => {
       questions: [
         {
           q: "How do I create an account?",
-          a: "To create a RealtyChain account:\n1. Go to our homepage and click 'Sign Up'\n2. Enter your email address and create a strong password\n3. Verify your email address via the link sent to you\n4. Complete your profile with required personal information\n5. Upload necessary identification documents for verification\n6. Once verified, you can start exploring investment opportunities"
+          a: "To create a HomeRun account:\n1. Go to our homepage and click 'Sign Up'\n2. Enter your email address and create a strong password\n3. Verify your email address via the link sent to you\n4. Complete your profile with required personal information\n5. Upload necessary identification documents for verification\n6. Once verified, you can start exploring investment opportunities"
         },
         {
           q: "How can I recover or reset my password?",
@@ -122,7 +104,7 @@ const FAQSection = () => {
         },
         {
           q: "What browsers and devices are supported?",
-          a: "RealtyChain is optimized for modern browsers and devices:\n- Chrome (latest version)\n- Firefox (latest version)\n- Safari (latest version)\n- Edge (latest version)\n\nWe recommend using the latest versions of these browsers for the best experience. Our platform is also mobile-responsive and works well on smartphones and tablets."
+          a: "HomeRun is optimized for modern browsers and devices:\n- Chrome (latest version)\n- Firefox (latest version)\n- Safari (latest version)\n- Edge (latest version)\n\nWe recommend using the latest versions of these browsers for the best experience. Our platform is also mobile-responsive and works well on smartphones and tablets."
         }
       ]
     }

@@ -14,8 +14,8 @@ const Footer = () => (
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-bold text-lg mb-4">RealtyChain</h3>
-            <p className="text-sm text-gray-400">Democratizing real estate investment through blockchain and AI.</p>
+            <h3 className="font-bold text-lg mb-4">HomeRun</h3>
+            <p className="text-sm text-gray-400">Democratising Real Estate Investment Through Co-Ownership.</p>
           </div>
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>

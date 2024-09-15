@@ -4,7 +4,7 @@ import Header from './Header';
 const StepByStepGuide = () => (
   <section className="py-12 bg-gray-50">
     <div className="container mx-auto px-4">
-      <h2 className="text-3xl font-bold text-center mb-8">How RealtyChain Works</h2>
+      <h2 className="text-3xl font-bold text-center mb-8">How HomeRun Works</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div className="bg-white shadow-lg rounded-lg mb-4">
           <div className="p-4 border-b">
@@ -58,7 +58,7 @@ const StepByStepGuide = () => (
 const Infographics = () => (
   <section className="py-12">
     <div className="container mx-auto px-4">
-      <h2 className="text-3xl font-bold text-center mb-8">Understanding RealtyChain</h2>
+      <h2 className="text-3xl font-bold text-center mb-8">Understanding HomeRun</h2>
       <div className="grid md:grid-cols-3 gap-8">
         <div className="bg-white shadow-lg rounded-lg mb-4">
           <div className="p-4 border-b">
@@ -94,7 +94,7 @@ const Infographics = () => (
 
 const VideoTutorials = () => {
   const tutorials = [
-    { id: 'getting-started', title: 'Getting Started with RealtyChain', videoId: 'placeholder1' },
+    { id: 'getting-started', title: 'Getting Started with HomeRun', videoId: 'placeholder1' },
     { id: 'investing', title: 'How to Make Your First Investment', videoId: 'placeholder2' },
     { id: 'dashboard', title: 'Navigating Your Investment Dashboard', videoId: 'placeholder3' },
     { id: 'withdrawing', title: 'Withdrawing Earnings and Managing Your Portfolio', videoId: 'placeholder4' },
@@ -139,7 +139,7 @@ const CallToAction = () => (
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-bold text-lg mb-4">RealtyChain</h3>
+            <h3 className="font-bold text-lg mb-4">HomeRun</h3>
             <p className="text-sm text-gray-400">Democratizing real estate investment through blockchain and AI.</p>
           </div>
           <div>
@@ -166,7 +166,7 @@ const CallToAction = () => (
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
-          © 2023 RealtyChain. All rights reserved.
+          © 2023 HomeRun. All rights reserved.
         </div>
       </div>
     </footer>
