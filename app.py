@@ -2,15 +2,13 @@ from flask import Flask, request, jsonify, abort
 from supabase import create_client, Client
 import os
 from dotenv import load_dotenv
+from flask_cors import CORS  # Import CORS
 from propelauth_flask import init_auth,current_user
 load_dotenv()
 from flask_cors import CORS
 
 
 app = Flask(__name__)
-CORS(app)
-# auth = init_auth(os.getenv("PROPEL_AUTH_URL"), os.getenv("PROPEL_AUTH_KEY"))
-
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_ANON_KEY")
@@ -72,6 +70,8 @@ def get_property_by_id(property_id):
     except Exception as e:
         app.logger.error(f"Error fetching property {property_id}: {e}")
         return jsonify({'error': 'Failed to fetch the property'}), 500
+
+# --- USERS ROUTES ---
 def get_user_details(user_id):
     try:
         user_id = int(user_id)
@@ -102,94 +102,60 @@ def get_user(user_id):
         abort(404)
 
 # --- INVESTMENTS ROUTES ---
-# @app.route('/investments', methods=['GET'])
-# def get_investments():
-#     try:
-#         response = supabase.table('investments').select('*').execute()  # Ensure the table name is all lowercase now
-#         print(f"Investments Response Status: {response.status_code}")  # Log the status code
-#         print(f"Investments Response Data: {response.data}")  # Log the data returned
 
-#         if response.data:
-#             return jsonify(response.data)
-#         else:
-#             return jsonify([]), 204
-#     except Exception as e:
-#         app.logger.error(f"Error fetching investments: {e}")
-#         print(f"Exception Details: {e}")  # Print exception details for debugging
-#         return jsonify({'error': 'Failed to fetch investments'}), 500
 @app.route('/investments', methods=['GET'])
 # @auth.require_user
 def get_investments():
     try:
-        # Fetch data from 'investments' table
         response = supabase.table('investments').select('*').execute()
-        
-        # Debugging: print the response for troubleshooting
         print(f"Investments Response: {response}")
-        
         if response.data:
             return jsonify(response.data), 200
         else:
             return jsonify([]), 204
     except Exception as e:
-        # Log the error if something goes wrong
         app.logger.error(f"Error fetching investments: {e}")
         return jsonify({'error': 'Failed to fetch investments'}), 500
-
-
-
-
 
 @app.route('/investments', methods=['POST'])
 def create_investment():
     """Create a new investment."""
     try:
-        # Get data from request
         data = request.get_json()
         user_id = data.get('user_id')
         property_id = data.get('property_id')
         amount = data.get('amount')
 
-        # Validate required fields
         if not all([user_id, property_id, amount]):
             return jsonify({'error': 'Missing required fields'}), 400
 
-        # Insert new investment
         response = supabase.table('investments').insert({
             'user_id': user_id,
             'property_id': property_id,
             'amount': amount
         }).execute()
 
-        print(f"Create Investment Response: {response}")  # Debugging: print response
+        print(f"Create Investment Response: {response}")
 
-        # Check if the insertion was successful
         if response.data:
-            return jsonify(response.data), 201  # Return created investment data
+            return jsonify(response.data), 201
         else:
             return jsonify({'error': 'Failed to create investment'}), 500
     except Exception as e:
         app.logger.error(f"Error creating investment: {e}")
         return jsonify({'error': 'Failed to create investment'}), 500
-# @app.route('/check-connection', methods=['GET'])
-# def check_connection():
-#     if SUPABASE_URL and SUPABASE_KEY:
-#         return jsonify({'status': 'Connected to Supabase'}), 200
-#     else:
-#         return jsonify({'status': 'Supabase connection failed'}), 500
 
 # --- ASSETS ROUTES ---
-
 
 @app.route('/assets', methods=['GET'])
 def get_assets():
     try:
         response = supabase.table('assets').select('*').execute()
-        print(f"Assets Full Response: {response}")  # Debugging: full response output
+        print(f"Assets Full Response: {response}")
         if response.data:
-            return jsonify(response.data)  # Returning the fetched data as JSON
+            return jsonify(response.data)
         else:
-            return jsonify([]), 204  # No content if no data found
+            return jsonify([]), 204
     except Exception as e:
         app.logger.error(f"Error fetching assets: {e}")
         return jsonify({'error': 'Failed to fetch assets'}), 500
@@ -215,7 +181,7 @@ def create_asset():
             'acquisition_date': acquisition_date
         }).execute()
 
-        print(f"Create Asset Response: {response}")  # Debugging: print response
+        print(f"Create Asset Response: {response}")
 
         if response.status_code == 201:
             return jsonify(response.data), 201
