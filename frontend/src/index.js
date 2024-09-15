@@ -30,7 +30,6 @@ export default function App() {
           <Route path="/property" element={<PropertyPage />} />
           <Route path="/confirmInvestment" element={<ConfirmInvestment />} />
           <Route path="/investment" element={<InvestmentPage />} />
-
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path='/help' element={<Help/>}/>
       </Routes>

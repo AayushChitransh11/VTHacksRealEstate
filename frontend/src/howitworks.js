@@ -1,24 +1,5 @@
 import React from 'react';
-
-const Header = () => (
-  <header className="flex items-center justify-between px-6 py-4 bg-white shadow-sm">
-    <a href="/" className="flex items-center space-x-2">
-      <i className="h-8 w-8 text-primary">🏢</i>
-      <span className="text-xl font-bold">RealtyChain</span>
-    </a>
-    <nav className="hidden md:flex space-x-4">
-      <a href="/browse" className="text-sm font-medium hover:text-primary">Browse Properties</a>
-      <a href="/how-it-works" className="text-sm font-medium hover:text-primary">How It Works</a>
-      <a href="/investors" className="text-sm font-medium hover:text-primary">Investors Portal</a>
-      <a href="/developers" className="text-sm font-medium hover:text-primary">Developers Portal</a>
-      <a href="/help" className="text-sm font-medium hover:text-primary">Help/FAQ</a>
-    </nav>
-    <div className="flex space-x-2">
-      <button className="border px-4 py-2">Log In</button>
-      <button className="bg-primary px-4 py-2 text-white">Sign Up</button>
-    </div>
-  </header>
-);
+import Header from './Header';
 
 const StepByStepGuide = () => (
   <section className="py-12 bg-gray-50">

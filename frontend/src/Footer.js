@@ -1,5 +1,14 @@
 import React from 'react';
 
+// const CallToAction = () => (
+//     <section className="bg-primary text-primary-foreground py-12 text-center bg-gray-900">
+//       <h2 className="text-3xl font-bold mb-4 text-white">Ready to Start Investing?</h2>
+//       <a href="/signup" className="inline-block bg-secondary bg-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-secondary-dark transition">
+//         Create an Account
+//       </a>
+//     </section>
+//   );
+
 const Footer = () => (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
@@ -13,8 +22,7 @@ const Footer = () => (
             <ul className="space-y-2">
               <li><a href="/browse" className="text-sm hover:text-primary">Browse Properties</a></li>
               <li><a href="/how-it-works" className="text-sm hover:text-primary">How It Works</a></li>
-              <li><a href="/investors" className="text-sm hover:text-primary">Investors Portal</a></li>
-              <li><a href="/developers" className="text-sm hover:text-primary">Developers Portal</a></li>
+              <li><a href="/dashboard" className="text-sm font-medium hover:text-primary">Dashboard</a></li>
             </ul>
           </div>
           <div>
@@ -44,3 +52,4 @@ const Footer = () => (
   );
   
 export default Footer;
+

@@ -1,38 +1,9 @@
 import React from 'react';
 import { useAuthInfo, useLogoutFunction, useRedirectFunctions } from '@propelauth/react';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
 
-const Header = () => {
-  const { isLoggedIn } = useAuthInfo();
-  const { redirectToLoginPage, redirectToSignupPage, redirectToAccountPage } = useRedirectFunctions();
-  const logout = useLogoutFunction();
-
-  return (
-    <header className="flex items-center justify-between px-6 py-4 bg-white shadow-sm">
-      <a href="/" className="flex items-center space-x-2">
-        <i className="h-8 w-8 text-primary">🏢</i>
-        <span className="text-xl font-bold">RealtyChain</span>
-      </a>
-      <nav className="hidden md:flex space-x-4">
-        <a href="/browse" className="text-sm font-medium hover:text-primary">Browse Properties</a>
-        <a href="/how-it-works" className="text-sm font-medium hover:text-primary">How It Works</a>
-        <a href="/investors" className="text-sm font-medium hover:text-primary">Investors Portal</a>
-        <a href="/developers" className="text-sm font-medium hover:text-primary">Developers Portal</a>
-        <a href="/help" className="text-sm font-medium hover:text-primary">Help/FAQ</a>
-      </nav>
-      <div className="flex space-x-2">
-        {isLoggedIn ? (
-          <button onClick={logout}>Log Out</button>
-        ) : (
-          <>
-            <button className="border px-4 py-2" onClick={() => redirectToLoginPage()}>Log In</button>
-            <button className="border bg-primary px-4 py-2 " onClick={() => redirectToSignupPage()}>Sign Up</button>
-          </>
-        )}
-      </div>
-    </header>
-  );
-};
 
 const Button = ({ onClick, children, className = '' }) => (
   <button onClick={onClick} className={`px-6 py-3 ${className}`}>
@@ -121,7 +92,7 @@ const FeaturesSection = () => (
   </section>
 );
 
-const PropertyCard = ({ image, title, location, minInvestment, roi }) => (
+const PropertyCard = ({ image, title, location, minInvestment, roi, id }) => (
   <div className="bg-white shadow-lg rounded-lg">
     <img src={image} alt={title} className="w-full h-48 object-cover" />
     <div className="p-4">
@@ -133,7 +104,10 @@ const PropertyCard = ({ image, title, location, minInvestment, roi }) => (
       </div>
     </div>
     <div className="p-4 bg-gray-900">
-      <button className="w-full bg-primary text-white py-2 rounded">View Details</button>
+      <a href={`/listing/${id}`} className="block w-full bg-primary text-white py-2 rounded text-center">
+      View Details
+      </a>
+      {/* <button className="w-full bg-primary text-white py-2 rounded">View Details</button> */}
     </div>
   </div>
 );
@@ -149,6 +123,7 @@ const PopularPropertiesSection = () => (
           location="Miami, FL"
           minInvestment={5000}
           roi={12}
+          id={1}
         />
         <PropertyCard
           image="https://images1.loopnet.com/i2/rzDC47-GS5PeVDMS5Xmj4Gnp6gFFc8dQ_PQFK4xXx4M/112/44-Exchange-Place-New-York-NY-Building-Photo-1-HighDefinition.jpg"
@@ -156,6 +131,7 @@ const PopularPropertiesSection = () => (
           location="New York, NY"
           minInvestment={10000}
           roi={15}
+          id={2}
         />
         <PropertyCard
           image="https://www.balivillas.com/images/villa/URID21914832001-TVG-Main.jpg"
@@ -163,6 +139,7 @@ const PopularPropertiesSection = () => (
           location="Bali, Indonesia"
           minInvestment={2000}
           roi={18}
+          id={3}
         />
       </div>
     </div>
@@ -202,49 +179,6 @@ const TestimonialsSection = () => (
       </div>
     </div>
   </section>
-);
-
-const Footer = () => (
-  <footer className="bg-gray-900 text-white py-12">
-    <div className="container mx-auto px-4">
-      <div className="grid md:grid-cols-4 gap-8">
-        <div>
-          <h3 className="font-bold text-lg mb-4">RealtyChain</h3>
-          <p className="text-sm text-gray-400">Democratizing real estate investment through blockchain and AI.</p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-4">Quick Links</h4>
-          <ul className="space-y-2">
-            <li><a href="/browse" className="text-sm hover:text-primary">Browse Properties</a></li>
-            <li><a href="/how-it-works" className="text-sm hover:text-primary">How It Works</a></li>
-            <li><a href="/investors" className="text-sm hover:text-primary">Investors Portal</a></li>
-            <li><a href="/developers" className="text-sm hover:text-primary">Developers Portal</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-4">Support</h4>
-          <ul className="space-y-2">
-            <li><a href="/help" className="text-sm hover:text-primary">Help/FAQ</a></li>
-            <li><a href="/contact" className="text-sm hover:text-primary">Contact Us</a></li>
-            <li><a href="/terms" className="text-sm hover:text-primary">Terms of Service</a></li>
-            <li><a href="/privacy" className="text-sm hover:text-primary">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-4">Subscribe</h4>
-          <p className="text-sm text-gray-400">Get the latest updates on investment opportunities.</p>
-          <form className="mt-4">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="w-full px-4 py-2 border border-gray-700 rounded bg-gray-800 text-white"
-            />
-            <button className="mt-2 w-full bg-primary text-white py-2 rounded">Subscribe</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </footer>
 );
 
 const Home = () => {

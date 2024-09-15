@@ -2,32 +2,20 @@ import { useState } from 'react'
 import { Button } from './components/Button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./components/Card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/Tabs"
-import { Avatar, AvatarFallback, AvatarImage } from "./components/Avatar"
 import { BarChart, DollarSign, Home, PieChart, TrendingUp, User } from "lucide-react"
+import Header from './Header';
+import Footer from './Footer';
+
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("overview")
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="border-b">
-        <div className="flex items-center justify-between px-6 py-4">
-          <h1 className="text-2xl font-bold">RealtyChain</h1>
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost">
-              <User className="w-5 h-5 mr-2" />
-              Profile
-            </Button>
-            <Avatar>
-              <AvatarImage src="/placeholder.svg?height=32&width=32" alt="User" />
-              <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-          </div>
-        </div>
-      </header>
-      <main className="flex-1 p-6 bg-gray-100">
+      <Header />      
+      <main className="flex-1 p-6 bg-gray-50">
         <div className="max-w-6xl mx-auto space-y-6">
-          <h2 className="text-3xl font-bold">Welcome back, John Doe</h2>
+          <h2 className="text-3xl font-bold">Welcome back </h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
@@ -154,6 +142,7 @@ export default function Dashboard() {
           </Tabs>
         </div>
       </main>
+      <Footer />      
     </div>
   )
 }

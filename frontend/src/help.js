@@ -1,24 +1,7 @@
 import React, { useState } from 'react';
 import { Building2, Search, MessageCircle, Mail, Book, Video, Users, ThumbsUp } from 'lucide-react';
-
-const Header = () => (
-  <header className="flex items-center justify-between px-6 py-4 bg-white shadow-sm">
-    <a href="/" className="flex items-center space-x-2">
-      <Building2 className="h-8 w-8 text-primary" />
-      <span className="text-xl font-bold">RealtyChain</span>
-    </a>
-    <nav className="hidden md:flex space-x-4">
-      <a href="/" className="text-sm font-medium hover:text-primary">Home</a>
-      <a href="/browse" className="text-sm font-medium hover:text-primary">Browse Properties</a>
-      <a href="/how-it-works" className="text-sm font-medium hover:text-primary">How It Works</a>
-      <a href="/faq" className="text-sm font-medium hover:text-primary">Help/FAQ</a>
-    </nav>
-    <div className="flex space-x-2">
-      <button className="border border-gray-300 rounded px-4 py-2 hover:bg-gray-100">Log In</button>
-      <button className="bg-primary text-white rounded px-4 py-2 hover:bg-primary-dark">Sign Up</button>
-    </div>
-  </header>
-);
+import Header from './Header';
+import Footer from './Footer';
 
 const Introduction = () => (
   <section className="py-12 bg-gray-50">
@@ -222,6 +205,7 @@ const Help = () => (
     <Introduction />
     <FAQSection />
     <SupportContact />
+    <Footer />
   </div>
 );
 
